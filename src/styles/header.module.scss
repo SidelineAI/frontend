@@ -1,0 +1,32 @@
+@use './mixin' as mixin;
+
+.container {
+  height: 10rem;
+  width: 100vw;
+  padding: 0 7.2rem;
+  display: flex;
+  align-items: center;
+
+  .sideline {
+    font-size: 5rem;
+    font-weight: 300;
+
+    .red {
+      color: mixin.$red;
+    }
+  }
+
+  .searchBar {
+    margin-left: 3rem;
+    width: 50rem;
+    height: 4rem;
+    border-radius: 6rem;
+    border: 0.35rem solid mixin.$red;
+    background: none;
+
+    &::placeholder {
+      font-size: 2rem;
+      font-weight: 300;
+    }
+  }
+}
