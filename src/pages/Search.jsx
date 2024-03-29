@@ -52,13 +52,13 @@ export default function Search() {
   ];
 
   return (
-    <>
+    <div className={styles.container}>
       <Header></Header>
       <div className={styles.resultsContainer}>
         {mockPlayers.map((player, index) => (
           <PlayerCard player={player} key={index} />
         ))}
       </div>
-    </>
+    </div>
   );
 }

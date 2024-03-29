@@ -1,9 +1,16 @@
 @use "./mixin" as mixin;
 
-.resultsContainer {
-  margin-top: 2rem;
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10rem;
+  justify-content: center;
+
+  .resultsContainer {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10rem;
+  }
 }
