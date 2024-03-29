@@ -1,4 +1,4 @@
-@use './mixin' as mixin;
+@use "./mixin" as mixin;
 
 .container {
   height: 10rem;
@@ -16,17 +16,34 @@
     }
   }
 
-  .searchBar {
+  .searchContainer {
+    position: relative;
     margin-left: 3rem;
-    width: 50rem;
-    height: 4rem;
-    border-radius: 6rem;
-    border: 0.35rem solid mixin.$red;
-    background: none;
 
-    &::placeholder {
+    .searchIcon {
+      width: 3.2rem;
+      position: absolute;
+      margin: 0.4rem 0 0 1.2rem;
+    }
+
+    .searchBar {
+      width: 50rem;
+      height: 4rem;
+      border-radius: 6rem;
+      border: 0.35rem solid mixin.$red;
+      background: none;
       font-size: 2rem;
       font-weight: 300;
+      padding-left: 5rem;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-size: 2rem;
+        font-weight: 300;
+      }
     }
   }
 }

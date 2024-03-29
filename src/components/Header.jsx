@@ -1,4 +1,5 @@
 import styles from "../styles/header.module.scss";
+import search from "../assets/Search.svg";
 
 export default function Header() {
   return (
@@ -6,11 +7,14 @@ export default function Header() {
       <div className={styles.sideline}>
         Side<span className={styles.red}>l</span>ine
       </div>
-      <input
-        className={styles.searchBar}
-        type="text"
-        placeholder="Who are you looking for today?"
-      />
+      <div className={styles.searchContainer}>
+        <img src={search} alt="search" className={styles.searchIcon} />
+        <input
+          className={styles.searchBar}
+          type="text"
+          placeholder="Who are you looking for today?"
+        />
+      </div>
     </div>
   );
 }
