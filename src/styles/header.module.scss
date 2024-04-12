@@ -61,6 +61,10 @@
       filter: brightness(0.9);
     }
 
+    &.active {
+      background-color: #e0e0e0;
+    }  
+
     p {
       font-size: 1.5rem;
       font-weight: 300;

@@ -1,6 +1,8 @@
 import styles from "../styles/search.module.scss";
 import Header from "../components/Header";
 import PlayerCard from "../components/PlayerCard";
+import Filter from "../components/Filter";
+import { useState } from "react";
 
 export default function Search() {
   const mockPlayers = [
@@ -65,7 +67,7 @@ export default function Search() {
 
   return (
     <div className={styles.container}>
-      <Header></Header>
+      <Header />
       <div className={styles.resultsContainer}>
         {mockPlayers.map((player, index) => (
           <PlayerCard player={player} key={index} />

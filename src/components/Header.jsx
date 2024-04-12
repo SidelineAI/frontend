@@ -2,14 +2,20 @@ import styles from "../styles/header.module.scss";
 import search from "../assets/Search.svg";
 import filter from "../assets/Filter.svg";
 import { useState } from "react";
+import Filter from "./Filter";
 
 export default function Header() {
   const [searchText, setSearchText] = useState("");
+  const [showFilter, setShowFilter] = useState(false);
 
   const keyPressed = (e) => {
     if (e.key === "Enter") {
       setSearchText("");
     }
+  };
+
+  const toggleFilter = () => {
+    setShowFilter(!showFilter);
   };
 
   return (
@@ -30,10 +36,14 @@ export default function Header() {
           onKeyDown={keyPressed}
         />
       </div>
-      <button className={styles.filterContainer}>
+      <button
+        className={`${styles.filterContainer} ${showFilter ? styles.active : ""}`}
+        onClick={toggleFilter}
+      >
         <p>Filter</p>
         <img src={filter} alt="Filter" />
       </button>
+      {showFilter && <Filter toggleFilter={toggleFilter} />}
     </div>
   );
 }
