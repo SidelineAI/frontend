@@ -10,6 +10,7 @@ export default function Header() {
 
   const keyPressed = (e) => {
     if (e.key === "Enter") {
+      // send searchText to backend
       setSearchText("");
     }
   };
@@ -37,7 +38,9 @@ export default function Header() {
         />
       </div>
       <button
-        className={`${styles.filterContainer} ${showFilter ? styles.active : ""}`}
+        className={`${styles.filterContainer} ${
+          showFilter ? styles.active : ""
+        }`}
         onClick={toggleFilter}
       >
         <p>Filter</p>

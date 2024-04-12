@@ -1,8 +1,6 @@
 import styles from "../styles/search.module.scss";
 import Header from "../components/Header";
 import PlayerCard from "../components/PlayerCard";
-import Filter from "../components/Filter";
-import { useState } from "react";
 
 export default function Search() {
   const mockPlayers = [
