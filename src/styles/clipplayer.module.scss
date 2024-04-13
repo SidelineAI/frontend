@@ -1,0 +1,20 @@
+@use "./mixin" as mixin;
+
+.container {
+  display: flex;
+
+  .highlightClip {
+    img {
+      width: 70rem;
+      height: 40rem;
+      object-fit: cover;
+      border-radius: 1rem;
+      cursor: pointer;
+    }
+  }
+
+  .otherClips {
+    margin-left: 1.3rem;
+    overflow-y: hidden;
+  }
+}

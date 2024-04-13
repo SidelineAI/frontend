@@ -1,0 +1,16 @@
+@use "./mixin" as mixin;
+
+.container {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+
+  img {
+    width: 8rem;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 0.1rem solid mixin.$red;
+    margin-right: 1.4rem;
+  }
+}

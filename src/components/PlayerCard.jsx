@@ -4,6 +4,7 @@ import dunking from "../assets/dunking.mp4";
 import handles from "../assets/handles.mp4";
 import threepointers from "../assets/threepointer.mp4";
 import layups from "../assets/layups.mp4";
+import PlayerInfo from "./PlayerInfo";
 
 export default function PlayerCard({ player }) {
   const [videoSrc, setVideoSrc] = useState(null);
@@ -43,21 +44,8 @@ export default function PlayerCard({ player }) {
       )}
       <div className={styles.info}>
         <div className={styles.left}>
-          <div className={styles.top}>
-            <p className={styles.name}>{player.name}</p>
-            <p className={styles.pos}>| {player.pos}</p>
-            <div className={styles.jerseyContainer}>
-              <p className={styles.numSymbol}>#</p>
-              <p className={styles.jersey}>{player.jersey}</p>
-            </div>
-          </div>
+          <PlayerInfo player={player} />
 
-          <p className={styles.school}>{player.school}</p>
-          <div className={styles.physical}>
-            <p>{player.height}</p>
-            <p>{player.age}</p>
-            <p>{player.weight}</p>
-          </div>
           <div className={styles.skills}>
             {player.skills.map((skill, index) => (
               <p

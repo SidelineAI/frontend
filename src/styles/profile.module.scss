@@ -1,0 +1,123 @@
+@use "./mixin" as mixin;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10rem;
+
+  .clipPlayerContainer {
+    margin-top: calc(mixin.$header-height);
+    display: flex;
+    justify-content: center;
+  }
+
+  .playerInfoContainer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 15rem;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 0.4rem solid mixin.$red;
+      margin-right: 2rem;
+    }
+
+    .stats {
+      div {
+        margin-left: 2rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+
+        .stat {
+          font-size: 2.2rem;
+          color: mixin.$red;
+        }
+
+        .label {
+          font-size: 1rem;
+          font-weight: 400;
+          margin-left: 0.8rem;
+          text-wrap: nowrap;
+        }
+      }
+    }
+  }
+
+  .scoutingReport {
+    margin-top: 2rem;
+    width: 93rem;
+    background-color: mixin.$red;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    .content {
+      color: mixin.$white;
+      font-size: 1.5rem;
+      font-weight: 300;
+    }
+
+    .analysisContainer {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 2rem;
+        aspect-ratio: 1;
+      }
+
+      .sidelineAnalysis {
+        margin-left: 0.3rem;
+        color: mixin.$white;
+        font-size: 1.4rem;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .subtitle {
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    font-style: italic;
+    color: mixin.$red;
+    font-weight: 300;
+  }
+
+  .recsAndSkills {
+    display: flex;
+    margin: 2rem 0 1rem;
+    width: 93rem;
+
+    .recsContainer {
+      .recs {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .skillsContainer {
+      margin-left: 2rem;
+    }
+  }
+
+  .similarPlayersContainer {
+    width: 93rem;
+
+    .similarPlayers {
+      background-color: mixin.$light;
+      border-radius: 1rem;
+      box-shadow: 0.2rem 0.3rem 0.3rem 0 rgba(36, 41, 47, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+  }
+}

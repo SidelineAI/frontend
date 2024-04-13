@@ -1,0 +1,43 @@
+@use "./mixin" as mixin;
+
+.container {
+  margin-bottom: 1rem;
+  display: flex;
+
+  img {
+    width: 10rem;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: 0.8rem;
+    cursor: pointer;
+  }
+
+  .right {
+    margin-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      font-size: 1.6rem;
+      font-style: italic;
+      font-weight: 400;
+      color: mixin.$black;
+      cursor: pointer;
+    }
+
+    .desc {
+      margin-top: 0.2rem;
+      flex: auto;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: mixin.$black;
+    }
+
+    .date {
+      font-size: 1rem;
+      font-style: italic;
+      font-weight: 400;
+      color: mixin.$faded;
+    }
+  }
+}

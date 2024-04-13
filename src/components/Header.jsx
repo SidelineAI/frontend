@@ -25,6 +25,29 @@ export default function Header({ searchResults, setSearchResults }) {
       apg: 4.8,
       fgp: "45%",
       img: "https://4kwallpapers.com/images/walls/thumbs_2t/7603.jpg",
+      clips: [
+        {
+          gameTitle: "vs Duke",
+          desc: "60% Field Goal Percentage",
+          date: "2024-04-10",
+          thumbnail:
+            "https://www.al.com/resizer/eCGrFt56cZ55GLV1-E_bZ6gZmKw=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/HOCJVTZCIVCR7J2TDNNPU7LNJ4.JPG",
+        },
+        {
+          gameTitle: "vs NC State",
+          desc: "80% Free Throw Percentage",
+          date: "2024-04-07",
+          thumbnail:
+            "https://variety.com/wp-content/uploads/2023/11/GettyImages-1760793417.jpg?w=1000&h=563&crop=1",
+        },
+        {
+          gameTitle: "vs Indiana",
+          desc: "24 Points per Game",
+          date: "2024-04-05",
+          thumbnail:
+            "https://www.yourbasin.com/wp-content/uploads/sites/78/2022/12/62ee53f9a6764735a9b070c2bc1f5c2f.jpg?w=2560&h=1440&crop=1",
+        },
+      ],
     },
     {
       name: "Kaitlin Bird",
@@ -73,7 +96,7 @@ export default function Header({ searchResults, setSearchResults }) {
       // send searchParameters to backend
       setSearchParameters("");
       // update/populate search results from backend
-      setSearchResults(mockPlayers);
+      setSearchResults && setSearchResults(mockPlayers);
     }
   };
 
@@ -84,7 +107,7 @@ export default function Header({ searchResults, setSearchResults }) {
   return (
     <div
       className={`${styles.container} ${
-        searchResults.length === 0 && styles.lower
+        searchResults && searchResults.length === 0 && styles.lower
       }`}
     >
       <div className={styles.sideline}>
@@ -95,7 +118,7 @@ export default function Header({ searchResults, setSearchResults }) {
         <input
           className={styles.searchBar}
           type="text"
-          placeholder="Who are you looking for today?"
+          placeholder="Search for a player"
           value={searchParameters}
           onChange={(e) => {
             setSearchParameters(e.target.value);

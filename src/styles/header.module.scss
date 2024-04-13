@@ -24,18 +24,18 @@
     margin-left: 3rem;
 
     .searchIcon {
-      width: 3.2rem;
+      width: 2.3rem;
       position: absolute;
       margin: 0.4rem 0 0 1.2rem;
     }
 
     .searchBar {
-      width: 55rem;
-      height: 4rem;
+      width: 65rem;
+      height: 3rem;
       border-radius: 6rem;
-      border: 0.35rem solid mixin.$red;
+      border: 0.25rem solid mixin.$red;
       background-color: mixin.$white;
-      font-size: 2rem;
+      font-size: 1.6rem;
       font-weight: 300;
       padding-left: 5rem;
       transition: 0.5s;
@@ -45,7 +45,7 @@
       }
 
       &::placeholder {
-        font-size: 2rem;
+        font-size: 1.6rem;
         font-weight: 300;
       }
     }

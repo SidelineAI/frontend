@@ -1,0 +1,58 @@
+@use "./mixin" as mixin;
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  .info {
+    display: flex;
+    align-items: center;
+
+    .name {
+      font-size: 3rem;
+      font-weight: 400;
+    }
+
+    .pos {
+      margin-left: 0.5rem;
+      font-size: 3rem;
+      font-weight: 300;
+    }
+
+    .jerseyContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 4rem;
+      aspect-ratio: 1;
+      background-color: mixin.$red;
+      border-radius: 100%;
+      margin-left: 1rem;
+      color: white;
+
+      .numSymbol {
+        font-size: 1rem;
+      }
+      .jersey {
+        font-size: 2rem;
+        font-weight: 300;
+      }
+    }
+  }
+  .school {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+
+  .physical {
+    display: flex;
+    align-items: center;
+    margin-top: 0.6rem;
+
+    p {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-right: 1rem;
+    }
+  }
+}

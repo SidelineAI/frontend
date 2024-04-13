@@ -1,0 +1,46 @@
+@use "./mixin" as mixin;
+
+.container {
+  margin-bottom: 1rem;
+  width: 70rem;
+  padding: 1rem 2rem;
+  background-color: mixin.$light;
+  border-radius: 1rem;
+  box-shadow: 0.2rem 0.3rem 0.3rem 0 rgba(36, 41, 47, 0.25);
+
+  .rec {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: mixin.$black;
+  }
+
+  .author {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    img {
+      width: 3rem;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .right {
+      margin-left: 0.5rem;
+      display: flex;
+      flex-direction: column;
+
+      .name {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: mixin.$black;
+      }
+
+      .school {
+        font-size: 0.8rem;
+        color: mixin.$faded;
+      }
+    }
+  }
+}
