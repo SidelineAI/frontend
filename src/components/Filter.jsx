@@ -29,7 +29,6 @@ export default function Filter({ toggleFilter, searchParameters }) {
     initialValues.searchParameters = searchParameters;
     // send filter values to backend
     toggleFilter();
-    console.log(initialValues);
   };
 
   return (
