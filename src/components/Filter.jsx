@@ -11,9 +11,10 @@ const initialValues = {
   height: "",
   weight: "",
   age: "",
+  searchParameters: "",
 };
 
-export default function Filter({ toggleFilter }) {
+export default function Filter({ toggleFilter, searchParameters }) {
   const [values, setValues] = useState(initialValues);
 
   const handleInputChange = (e) => {
@@ -25,8 +26,10 @@ export default function Filter({ toggleFilter }) {
   };
 
   const saveFilter = () => {
+    initialValues.searchParameters = searchParameters;
     // send filter values to backend
     toggleFilter();
+    console.log(initialValues);
   };
 
   return (
@@ -131,7 +134,7 @@ export default function Filter({ toggleFilter }) {
             </div>
           </div>
         </div>
-        <button onClick={saveFilter}>Close</button>
+        <button onClick={saveFilter}>Save</button>
       </div>
     </div>
   );

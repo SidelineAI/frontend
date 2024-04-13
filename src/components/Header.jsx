@@ -5,13 +5,13 @@ import { useState } from "react";
 import Filter from "./Filter";
 
 export default function Header() {
-  const [searchText, setSearchText] = useState("");
+  const [searchParameters, setsearchParameters] = useState("");
   const [showFilter, setShowFilter] = useState(false);
 
   const keyPressed = (e) => {
     if (e.key === "Enter") {
-      // send searchText to backend
-      setSearchText("");
+      // send searchParameters to backend
+      setsearchParameters("");
     }
   };
 
@@ -30,9 +30,9 @@ export default function Header() {
           className={styles.searchBar}
           type="text"
           placeholder="Who are you looking for today?"
-          value={searchText}
+          value={searchParameters}
           onChange={(e) => {
-            setSearchText(e.target.value);
+            setsearchParameters(e.target.value);
           }}
           onKeyDown={keyPressed}
         />
@@ -46,7 +46,12 @@ export default function Header() {
         <p>Filter</p>
         <img src={filter} alt="Filter" />
       </button>
-      {showFilter && <Filter toggleFilter={toggleFilter} />}
+      {showFilter && (
+        <Filter
+          toggleFilter={toggleFilter}
+          searchParameters={searchParameters}
+        />
+      )}
     </div>
   );
 }
