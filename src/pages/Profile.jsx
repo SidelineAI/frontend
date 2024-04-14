@@ -37,7 +37,7 @@ export default function Profile() {
     // GET SIMILAR PLAYERS
     axios.post(`http://127.0.0.1:5000/search/similar`, {
       uuid: id,
-      num_players: 2
+      num_players: 3
     })
     .then(res => {
       setSimilarPlayers(res.data);
