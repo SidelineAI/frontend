@@ -1,33 +1,19 @@
 import { useState } from "react";
 import styles from "../styles/filter.module.scss";
 
-const initialValues = {
-  ppg: "",
-  rpg: "",
-  apg: "",
-  fg: "",
-  ft: "",
-  pos: "",
-  height: "",
-  weight: "",
-  age: "",
-  searchParameters: "",
-};
+export default function Filter({ toggleFilter, searchParameters, updateSearchParameters }) {
 
-export default function Filter({ toggleFilter, searchParameters }) {
-  const [values, setValues] = useState(initialValues);
+  const [values, setValues] = useState(searchParameters);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
+    const newSearchParameters = { ...searchParameters };
+    newSearchParameters["stats_filter"][name] = value;
+    setValues(newSearchParameters);
+    updateSearchParameters(newSearchParameters);
   };
-
+  
   const saveFilter = () => {
-    initialValues.searchParameters = searchParameters;
-    // send filter values to backend
     toggleFilter();
   };
 
@@ -43,9 +29,9 @@ export default function Filter({ toggleFilter, searchParameters }) {
               <input
                 type="text"
                 placeholder="Points per Game"
-                value={values.ppg}
+                value={values.stats_filter.avg_points}
                 onChange={handleInputChange}
-                name="ppg"
+                name="avg_points"
               />
             </div>
             <div className={styles.filterItem}>
@@ -53,9 +39,9 @@ export default function Filter({ toggleFilter, searchParameters }) {
               <input
                 type="text"
                 placeholder="Rebounds per Game"
-                value={values.rpg}
+                value={values.stats_filter.avg_rebounds}
                 onChange={handleInputChange}
-                name="rpg"
+                name="avg_rebounds"
               />
             </div>
             <div className={styles.filterItem}>
@@ -63,9 +49,9 @@ export default function Filter({ toggleFilter, searchParameters }) {
               <input
                 type="text"
                 placeholder="Assists per Game"
-                value={values.apg}
+                value={values.stats_filter.avg_assists}
                 onChange={handleInputChange}
-                name="apg"
+                name="avg_assists"
               />
             </div>
             <div className={styles.filterItem}>
@@ -73,9 +59,9 @@ export default function Filter({ toggleFilter, searchParameters }) {
               <input
                 type="text"
                 placeholder="Field Goal (%)"
-                value={values.fg}
+                value={values.stats_filter.avg_field_goal_pct}
                 onChange={handleInputChange}
-                name="fg"
+                name="avg_field_goal_pct"
               />
             </div>
             <div className={styles.filterItem}>
@@ -83,9 +69,19 @@ export default function Filter({ toggleFilter, searchParameters }) {
               <input
                 type="text"
                 placeholder="Free Throw (%)"
-                value={values.ft}
+                value={values.stats_filter.avg_free_throw_pct}
                 onChange={handleInputChange}
-                name="ft"
+                name="avg_free_throw_pct"
+              />
+            </div>
+            <div className={styles.filterItem}>
+              <label>3-Point (%)</label>
+              <input
+                type="text"
+                placeholder="3-Point (%)"
+                value={values.stats_filter.avg_three_point_pct}
+                onChange={handleInputChange}
+                name="avg_three_point_pct"
               />
             </div>
           </div>
@@ -96,9 +92,9 @@ export default function Filter({ toggleFilter, searchParameters }) {
               <input
                 type="text"
                 placeholder="Position"
-                value={values.pos}
+                value={values.stats_filter.position}
                 onChange={handleInputChange}
-                name="pos"
+                name="position"
               />
             </div>
             <div className={styles.filterItem}>
@@ -106,7 +102,7 @@ export default function Filter({ toggleFilter, searchParameters }) {
               <input
                 type="text"
                 placeholder="Height"
-                value={values.height}
+                value={values.stats_filter.height}
                 onChange={handleInputChange}
                 name="height"
               />
@@ -116,7 +112,7 @@ export default function Filter({ toggleFilter, searchParameters }) {
               <input
                 type="text"
                 placeholder="Weight"
-                value={values.weight}
+                value={values.stats_filter.weight}
                 onChange={handleInputChange}
                 name="weight"
               />
@@ -126,7 +122,7 @@ export default function Filter({ toggleFilter, searchParameters }) {
               <input
                 type="text"
                 placeholder="Age"
-                value={values.age}
+                value={values.stats_filter.age}
                 onChange={handleInputChange}
                 name="age"
               />

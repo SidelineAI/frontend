@@ -4,6 +4,23 @@ import filter from "../assets/icons/Filter.svg";
 import { useState } from "react";
 import Filter from "./Filter";
 import { useLocation } from "react-router-dom";
+import axios from 'axios';
+
+const initialValues = {
+  stats_filter: {
+    avg_field_goal_pct: "0",
+    avg_free_throw_pct: "0",
+    avg_three_point_pct: "0",
+    avg_points: "0",
+    avg_rebounds: "0",
+    avg_assists: "0",
+    position: "",
+    weight: "",
+    height: "",
+    age: "",
+  },
+  categorical_query: ""
+};
 
 export default function Header({ searchResults, setSearchResults }) {
   const mockPlayers = [
@@ -286,20 +303,29 @@ export default function Header({ searchResults, setSearchResults }) {
 
   const location = useLocation();
 
-  const [searchParameters, setSearchParameters] = useState("");
+  const [searchParameters, setSearchParameters] = useState(initialValues);
   const [showFilter, setShowFilter] = useState(false);
 
-  const keyPressed = (e) => {
-    if (e.key === "Enter") {
-      // send searchParameters to backend
-      setSearchParameters("");
-      // update/populate search results from backend
-      setSearchResults && setSearchResults(mockPlayers);
-    }
+  const updateSearchParameters = (newParams) => {
+    setSearchParameters(newParams);
   };
 
   const toggleFilter = () => {
     setShowFilter(!showFilter);
+  };
+
+  const keyPressed = (e) => {
+    if (e.key === "Enter") {
+      axios
+        .post("http://127.0.0.1:5000/search/player", searchParameters, {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+          }
+        })
+        .then(res => setSearchResults(res.data))
+        .catch(err => console.log(err));
+    }
   };
 
   return (
@@ -321,9 +347,12 @@ export default function Header({ searchResults, setSearchResults }) {
               ? "Search for a video"
               : "Search for a player"
           }
-          value={searchParameters}
+          value={searchParameters.categorical_query}
           onChange={(e) => {
-            setSearchParameters(e.target.value);
+            updateSearchParameters({
+              ...searchParameters,
+              categorical_query: e.target.value
+            });
           }}
           onKeyDown={keyPressed}
         />
@@ -341,6 +370,7 @@ export default function Header({ searchResults, setSearchResults }) {
         <Filter
           toggleFilter={toggleFilter}
           searchParameters={searchParameters}
+          updateSearchParameters={setSearchParameters}
         />
       )}
     </div>

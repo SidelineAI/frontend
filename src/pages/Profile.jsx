@@ -343,32 +343,32 @@ export default function Profile() {
         <ClipPlayer player={player} />
       </div>
       <div className={styles.playerInfoContainer}>
-        <img src={player.img} alt="PFP" />
+        {/* <img src={player.img} alt="PFP" /> */}
         <PlayerInfoLarge player={player} />
         <div className={styles.statsContainer}>
           <div className={styles.stats}>
             <div>
-              <p className={styles.stat}>{player.points_per_game}</p>
+              <p className={styles.stat}>{player.avg_points}</p>
               <p className={styles.label}>Points per Game</p>
             </div>
             <div>
-              <p className={styles.stat}>{player.rebounds}</p>
+              <p className={styles.stat}>{player.avg_rebounds}</p>
               <p className={styles.label}>Rebounds per Game</p>
             </div>
             <div>
-              <p className={styles.stat}>{player.assists}</p>
+              <p className={styles.stat}>{player.avg_assists}</p>
               <p className={styles.label}>Assists per Game</p>
             </div>
             <div>
-              <p className={styles.stat}>{player.field_goal_pct}</p>
+              <p className={styles.stat}>{player.avg_field_goal_pct}</p>
               <p className={styles.label}>Field Goal Percentage</p>
             </div>
             <div>
-              <p className={styles.stat}>{player.three_point_pct}</p>
+              <p className={styles.stat}>{player.avg_three_point_pct}</p>
               <p className={styles.label}>Three Point Percentage</p>
             </div>
             <div>
-              <p className={styles.stat}>{player.free_throw_pct}</p>
+              <p className={styles.stat}>{player.avg_free_throw_pct}</p>
               <p className={styles.label}>Free Throw Percentage</p>
             </div>
           </div>
@@ -381,22 +381,22 @@ export default function Profile() {
           <p className={styles.sidelineAnalysis}>Sideline AI Analysis</p>
         </div>
       </div>
-      <div className={styles.recsContainer}>
+      {/* <div className={styles.recsContainer}>
         <p className={styles.subtitle}>Recommendations</p>
         <div className={styles.recs}>
           {player.recommendations.map((rec, index) => (
             <Rec rec={rec} key={index} />
           ))}
         </div>
-      </div>
-      <div className={styles.similarPlayersContainer}>
+      </div> */}
+      {/* <div className={styles.similarPlayersContainer}>
         <p className={styles.subtitle}>Similar Players</p>
         <div className={styles.similarPlayers}>
           {similarPlayers.map((similar, index) => (
             <SimilarPlayer player={similar} key={index} />
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
