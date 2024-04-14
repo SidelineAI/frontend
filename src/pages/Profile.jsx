@@ -14,9 +14,12 @@ export default function Profile() {
 
   const { id } = useParams();
   const [player, setPlayer] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [similarPlayers, setSimilarPlayers] = useState(null)
+  const [loadingPlayer, setLoadingPlayer] = useState(true);
+  const [loadingSimilarPlayers, setLoadingSimilarPlayers] = useState(true);
 
   useEffect(() => {
+    // GET PLAYER DATA
     axios.get(`http://127.0.0.1:5000/player/${id}`, {
       headers: {
         "Access-Control-Allow-Origin": "*"
@@ -24,18 +27,32 @@ export default function Profile() {
     })
     .then(res => {
       setPlayer(res.data);
-      setLoading(false); // Set loading to false once data is fetched
+      setLoadingPlayer(false); // Set loading to false once data is fetched
     })
     .catch(err => {
       console.log(err);
-      setLoading(false); // Ensure loading is set to false even if there is an error
+      setLoadingPlayer(false); // Ensure loading is set to false even if there is an error
+    });
+
+    // GET SIMILAR PLAYERS
+    axios.post(`http://127.0.0.1:5000/search/similar`, {
+      uuid: id,
+      num_players: 2
+    })
+    .then(res => {
+      setSimilarPlayers(res.data);
+      setLoadingSimilarPlayers(false);
+    })
+    .catch(err => {
+      console.error(err);
+      setLoadingSimilarPlayers(false);
     });
   }, [id]);
 
 
   const navigate = useNavigate();
 
-  if (loading) {
+  if (loadingPlayer || loadingSimilarPlayers) {
     return <div>Loading...</div>; // Display a loading message or a spinner
   }
 
@@ -88,22 +105,31 @@ export default function Profile() {
           <p className={styles.sidelineAnalysis}>Sideline AI Analysis</p>
         </div>
       </div>
-      {/* <div className={styles.recsContainer}>
+      <div className={styles.recsContainer}>
         <p className={styles.subtitle}>Recommendations</p>
         <div className={styles.recs}>
-          {player.recommendations.map((rec, index) => (
+          <Rec
+            rec={{
+              rec: "John is a dedicated student with a strong passion for physics.",
+              pfp: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2024-04/240412-mark-pope-se-107p-e20400.jpg",
+              name: "John Doe",
+              school: "University of Example"
+            }}
+          />
+          {/* ADD FUNCTIONALITY FOR RECOMMENDATIONS BELOW ONCE IMPLEMENTED IN BACKEND */}
+          {/* {player.recommendations.map((rec, index) => (
             <Rec rec={rec} key={index} />
-          ))}
+          ))} */}
         </div>
-      </div> */}
-      {/* <div className={styles.similarPlayersContainer}>
+      </div>
+      <div className={styles.similarPlayersContainer}>
         <p className={styles.subtitle}>Similar Players</p>
         <div className={styles.similarPlayers}>
           {similarPlayers.map((similar, index) => (
             <SimilarPlayer player={similar} key={index} />
           ))}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }
