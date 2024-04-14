@@ -126,7 +126,13 @@ export default function Profile() {
         <p className={styles.subtitle}>Similar Players</p>
         <div className={styles.similarPlayers}>
           {similarPlayers.map((similar, index) => (
-            <SimilarPlayer player={similar} key={index} />
+            <SimilarPlayer 
+              player={similar}
+              key={index} 
+              onSimilarPlayerClick={() => {
+                navigate(`/${similar.uuid}`);
+                window.location.reload(); // Reload the page
+              }} />
           ))}
         </div>
       </div>
