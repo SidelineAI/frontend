@@ -14,6 +14,7 @@ import Loading from "./Loading";
 export default function Profile() {
   const { id } = useParams();
   const [player, setPlayer] = useState(null);
+  const [video, setVideo] = useState([]);
   const [similarPlayers, setSimilarPlayers] = useState(null);
   const [loadingPlayer, setLoadingPlayer] = useState(true);
   const [loadingSimilarPlayers, setLoadingSimilarPlayers] = useState(true);
@@ -35,6 +36,19 @@ export default function Profile() {
         setLoadingPlayer(false); // Ensure loading is set to false even if there is an error
       });
 
+    axios
+      .post(`http://127.0.0.1:5000/search/video`, {
+        query: ".",
+        num_vids: 1,
+        player_id: id,
+      })
+      .then((res) => {
+        setVideo(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+        // setLoadingSimilarPlayers(false);
+      });
     // GET SIMILAR PLAYERS
     axios
       .post(`http://127.0.0.1:5000/search/similar`, {
@@ -64,11 +78,11 @@ export default function Profile() {
         <p>Home</p>
       </button>
       <Header />
-      {/* <div className={styles.clipPlayerContainer}>
-        <ClipPlayer player={player} />
-      </div> */}
+      <div className={styles.clipPlayerContainer}>
+        <ClipPlayer videos={video} />
+      </div>
       <div className={styles.playerInfoContainer}>
-        {/* <img src={player.img} alt="PFP" /> */}
+        <img src={player.profile_img} alt="PFP" />
         <PlayerInfoLarge player={player} />
         <div className={styles.statsContainer}>
           <div className={styles.stats}>
