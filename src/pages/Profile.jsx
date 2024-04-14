@@ -9,51 +9,52 @@ import LeftArrow from "../assets/icons/LeftArrow.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Loading from "./Loading";
 
 export default function Profile() {
-
   const { id } = useParams();
   const [player, setPlayer] = useState(null);
-  const [similarPlayers, setSimilarPlayers] = useState(null)
+  const [similarPlayers, setSimilarPlayers] = useState(null);
   const [loadingPlayer, setLoadingPlayer] = useState(true);
   const [loadingSimilarPlayers, setLoadingSimilarPlayers] = useState(true);
 
   useEffect(() => {
     // GET PLAYER DATA
-    axios.get(`http://127.0.0.1:5000/player/${id}`, {
-      headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
-    })
-    .then(res => {
-      setPlayer(res.data);
-      setLoadingPlayer(false); // Set loading to false once data is fetched
-    })
-    .catch(err => {
-      console.log(err);
-      setLoadingPlayer(false); // Ensure loading is set to false even if there is an error
-    });
+    axios
+      .get(`http://127.0.0.1:5000/player/${id}`, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
+      .then((res) => {
+        setPlayer(res.data);
+        setLoadingPlayer(false); // Set loading to false once data is fetched
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoadingPlayer(false); // Ensure loading is set to false even if there is an error
+      });
 
     // GET SIMILAR PLAYERS
-    axios.post(`http://127.0.0.1:5000/search/similar`, {
-      uuid: id,
-      num_players: 3
-    })
-    .then(res => {
-      setSimilarPlayers(res.data);
-      setLoadingSimilarPlayers(false);
-    })
-    .catch(err => {
-      console.error(err);
-      setLoadingSimilarPlayers(false);
-    });
+    axios
+      .post(`http://127.0.0.1:5000/search/similar`, {
+        uuid: id,
+        num_players: 3,
+      })
+      .then((res) => {
+        setSimilarPlayers(res.data);
+        setLoadingSimilarPlayers(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoadingSimilarPlayers(false);
+      });
   }, [id]);
-
 
   const navigate = useNavigate();
 
   if (loadingPlayer || loadingSimilarPlayers) {
-    return <div>Loading...</div>; // Display a loading message or a spinner
+    return <Loading />; // Display a loading message or a spinner
   }
 
   return (
@@ -113,7 +114,7 @@ export default function Profile() {
               rec: "John is a dedicated student with a strong passion for physics.",
               pfp: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2024-04/240412-mark-pope-se-107p-e20400.jpg",
               name: "John Doe",
-              school: "University of Example"
+              school: "University of Example",
             }}
           />
           {/* ADD FUNCTIONALITY FOR RECOMMENDATIONS BELOW ONCE IMPLEMENTED IN BACKEND */}
@@ -126,13 +127,14 @@ export default function Profile() {
         <p className={styles.subtitle}>Similar Players</p>
         <div className={styles.similarPlayers}>
           {similarPlayers.map((similar, index) => (
-            <SimilarPlayer 
+            <SimilarPlayer
               player={similar}
-              key={index} 
+              key={index}
               onSimilarPlayerClick={() => {
                 navigate(`/${similar.uuid}`);
                 window.location.reload(); // Reload the page
-              }} />
+              }}
+            />
           ))}
         </div>
       </div>
