@@ -1,17 +1,22 @@
 import styles from "../styles/clipplayer.module.scss";
 import Clip from "../components/Clip";
+import Vimeo from '@u-wave/react-vimeo';
 
-export default function ClipPlayer({ player }) {
+export default function ClipPlayer({ videos }) {
   return (
     <div className={styles.container}>
       <div className={styles.highlightClip}>
-        <img src={player.clips[0].thumbnail} alt="Highlight" />
+        <Vimeo
+          video={videos.clips[0].videoID}
+          start={videos.clips[0].time_range.start}
+          end={videos.clips[0].time_range.end}
+        />
       </div>
-      <div className={styles.otherClips}>
-        {player.clips.map(
-          (clip, index) => index > 0 && <Clip clip={clip} key={index} />
+      {/* <div className={styles.otherClips}>
+        {videos.clips.map(
+          (clip, index) => index > 0 && <Vimeo clip={clip} key={index} />
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
