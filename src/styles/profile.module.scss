@@ -5,6 +5,34 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 10rem;
+  position: relative;
+
+  .backContainer {
+    position: absolute;
+    top: mixin.$header-height;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+    padding: 0.4rem 0.8rem;
+    border-radius: 3rem;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: mixin.$light;
+    }
+
+    img {
+      width: 2.5rem;
+      aspect-ratio: 1;
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: mixin.$red;
+    }
+  }
 
   .clipPlayerContainer {
     margin-top: calc(mixin.$header-height);
@@ -13,9 +41,9 @@
   }
 
   .playerInfoContainer {
+    width: 93rem;
     margin-top: 2rem;
     display: flex;
-    justify-content: center;
     align-items: center;
 
     img {
@@ -24,26 +52,35 @@
       object-fit: cover;
       border-radius: 50%;
       border: 0.4rem solid mixin.$red;
-      margin-right: 2rem;
+      margin-right: 3rem;
     }
 
-    .stats {
-      div {
-        margin-left: 2rem;
-        display: flex;
-        align-items: center;
-        margin-bottom: 0.5rem;
+    .statsContainer {
+      flex: auto;
+      display: flex;
+      justify-content: end;
 
-        .stat {
-          font-size: 2.2rem;
-          color: mixin.$red;
-        }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0 2rem;
 
-        .label {
-          font-size: 1rem;
-          font-weight: 400;
-          margin-left: 0.8rem;
-          text-wrap: nowrap;
+        div {
+          display: flex;
+          align-items: center;
+          margin-bottom: 0.5rem;
+
+          .stat {
+            font-size: 2.2rem;
+            color: mixin.$red;
+          }
+
+          .label {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-left: 0.8rem;
+            text-wrap: nowrap;
+          }
         }
       }
     }
@@ -91,20 +128,13 @@
     font-weight: 300;
   }
 
-  .recsAndSkills {
-    display: flex;
+  .recsContainer {
     margin: 2rem 0 1rem;
     width: 93rem;
 
-    .recsContainer {
-      .recs {
-        display: flex;
-        flex-direction: column;
-      }
-    }
-
-    .skillsContainer {
-      margin-left: 2rem;
+    .recs {
+      display: flex;
+      flex-direction: column;
     }
   }
 

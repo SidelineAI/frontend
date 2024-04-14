@@ -5,7 +5,7 @@
 
   .highlightClip {
     img {
-      width: 70rem;
+      width: 68rem;
       height: 40rem;
       object-fit: cover;
       border-radius: 1rem;
@@ -15,6 +15,8 @@
 
   .otherClips {
     margin-left: 1.3rem;
-    overflow-y: hidden;
+    min-width: 24rem;
+    height: 40rem;
+    overflow-y: auto;
   }
 }

@@ -4,11 +4,13 @@ export default function PlayerInfoLarge({ player }) {
   return (
     <div className={styles.container}>
       <div className={styles.info}>
-        <p className={styles.name}>{player.name}</p>
-        <p className={styles.pos}>| {player.pos}</p>
+        <p className={styles.name}>
+          {player.first_name} {player.last_name}
+        </p>
+        <p className={styles.pos}>| {player.position}</p>
         <div className={styles.jerseyContainer}>
           <p className={styles.numSymbol}>#</p>
-          <p className={styles.jersey}>{player.jersey}</p>
+          <p className={styles.jersey}>{player.number}</p>
         </div>
       </div>
       <p className={styles.school}>{player.school}</p>
@@ -17,6 +19,7 @@ export default function PlayerInfoLarge({ player }) {
         <p>{player.age}</p>
         <p>{player.weight}</p>
       </div>
+      <p className={styles.games}>{player.games_played} Games Played</p>
     </div>
   );
 }

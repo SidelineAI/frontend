@@ -6,7 +6,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="profile" element={<Profile />} />
+        <Route path=":id" element={<Profile />} />
         <Route path="*" element={<Search />} />
       </Routes>
     </BrowserRouter>

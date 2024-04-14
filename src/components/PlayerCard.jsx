@@ -6,7 +6,7 @@ import threepointers from "../assets/threepointer.mp4";
 import layups from "../assets/layups.mp4";
 import PlayerInfo from "./PlayerInfo";
 
-export default function PlayerCard({ player }) {
+export default function PlayerCard({ player, onPlayerClick }) {
   const [videoSrc, setVideoSrc] = useState(null);
 
   const handleSkillHover = (skill) => {
@@ -21,7 +21,7 @@ export default function PlayerCard({ player }) {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={onPlayerClick}>
       {videoSrc ? (
         <video autoPlay loop muted playsInline>
           <source
@@ -60,20 +60,28 @@ export default function PlayerCard({ player }) {
         </div>
         <div className={styles.right}>
           <div>
-            <p className={styles.stat}>{player.ppg}</p>
+            <p className={styles.stat}>{player.points_per_game}</p>
             <p className={styles.label}>Points per Game</p>
           </div>
           <div>
-            <p className={styles.stat}>{player.rpg}</p>
+            <p className={styles.stat}>{player.rebounds}</p>
             <p className={styles.label}>Rebounds per Game</p>
           </div>
           <div>
-            <p className={styles.stat}>{player.apg}</p>
+            <p className={styles.stat}>{player.assists}</p>
             <p className={styles.label}>Assists per Game</p>
           </div>
           <div>
-            <p className={styles.stat}>{player.fgp}</p>
+            <p className={styles.stat}>{player.field_goal_pct}</p>
             <p className={styles.label}>Field Goal Percentage</p>
+          </div>
+          <div>
+            <p className={styles.stat}>{player.three_point_pct}</p>
+            <p className={styles.label}>Three Point Percentage</p>
+          </div>
+          <div>
+            <p className={styles.stat}>{player.free_throw_pct}</p>
+            <p className={styles.label}>Free Throw Percentage</p>
           </div>
         </div>
       </div>
