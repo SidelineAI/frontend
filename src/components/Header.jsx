@@ -20,6 +20,7 @@ const initialValues = {
     age: "",
   },
   categorical_query: "",
+  num_players: 10,
 };
 
 export default function Header({ searchResults, setSearchResults }) {
