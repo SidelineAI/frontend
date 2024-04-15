@@ -7,7 +7,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path=":id" element={<Profile />} />
-        <Route path="/" element={<Search />} />
+        <Route path="search" element={<Search />} />
       </Routes>
     </BrowserRouter>
   );
