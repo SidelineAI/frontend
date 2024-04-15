@@ -65,11 +65,7 @@ export default function Header({ searchResults, setSearchResults }) {
         <input
           className={styles.searchBar}
           type="text"
-          placeholder={
-            location.pathname !== "/"
-              ? "Search for a video"
-              : "Search for a player"
-          }
+          placeholder="Search for a player"
           value={searchParameters.categorical_query}
           onChange={(e) => {
             updateSearchParameters({

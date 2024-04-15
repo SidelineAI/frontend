@@ -10,6 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
+import ProfileHeader from "../components/ProfileHeader";
 
 export default function Profile() {
   const { id } = useParams();
@@ -21,48 +22,47 @@ export default function Profile() {
 
   useEffect(() => {
     // GET PLAYER DATA
-    axios
-      .get(`http://127.0.0.1:5000/player/${id}`, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      })
-      .then((res) => {
-        setPlayer(res.data);
-        setLoadingPlayer(false); // Set loading to false once data is fetched
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoadingPlayer(false); // Ensure loading is set to false even if there is an error
-      });
-
-    axios
-      .post(`http://127.0.0.1:5000/search/video`, {
+    axios.get(`http://127.0.0.1:5000/player/${id}`, {
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
+    })
+    .then(res => {
+      setPlayer(res.data);
+      setLoadingPlayer(false);
+    })
+    .catch(err => {
+      console.log(err);
+      setLoadingPlayer(false);
+    });
+  
+    // GET VIDEOS
+    axios.post(`http://127.0.0.1:5000/search/video`, {
         query: ".",
-        num_vids: 1,
-        player_id: id,
-      })
-      .then((res) => {
-        setVideo(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-        // setLoadingSimilarPlayers(false);
-      });
+        num_vids: 5,
+        player_id: id
+    })
+    .then(res => {
+      setVideo(res.data);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+  
     // GET SIMILAR PLAYERS
     axios
       .post(`http://127.0.0.1:5000/search/similar`, {
         uuid: id,
-        num_players: 3,
-      })
-      .then((res) => {
-        setSimilarPlayers(res.data);
-        setLoadingSimilarPlayers(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoadingSimilarPlayers(false);
-      });
+        num_players: 3
+    })
+    .then(res => {
+      setSimilarPlayers(res.data);
+      setLoadingSimilarPlayers(false);
+    })
+    .catch(err => {
+      console.error(err);
+      setLoadingSimilarPlayers(false);
+    });
   }, [id]);
 
   const navigate = useNavigate();
@@ -77,7 +77,7 @@ export default function Profile() {
         <img src={LeftArrow} alt="Back" />
         <p>Home</p>
       </button>
-      <Header />
+      <ProfileHeader setVideo={setVideo}/>
       <div className={styles.clipPlayerContainer}>
         <ClipPlayer videos={video} />
       </div>
