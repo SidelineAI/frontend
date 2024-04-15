@@ -4,7 +4,7 @@ import filter from "../assets/icons/Filter.svg";
 import { useState } from "react";
 import Filter from "./Filter";
 import { useLocation } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 
 const initialValues = {
   stats_filter: {
@@ -19,11 +19,10 @@ const initialValues = {
     height: "",
     age: "",
   },
-  categorical_query: ""
+  categorical_query: "",
 };
 
 export default function Header({ searchResults, setSearchResults }) {
-
   const location = useLocation();
 
   const [searchParameters, setSearchParameters] = useState(initialValues);
@@ -43,18 +42,21 @@ export default function Header({ searchResults, setSearchResults }) {
         .post("http://127.0.0.1:5000/search/player", searchParameters, {
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-          }
+            "Access-Control-Allow-Origin": "*",
+          },
         })
-        .then(res => setSearchResults(res.data))
-        .catch(err => console.log(err));
+        .then((res) => setSearchResults(res.data))
+        .catch((err) => console.log(err));
     }
   };
 
   return (
     <div
       className={`${styles.container} ${
-        searchResults && searchResults.length === 0 && styles.lower
+        searchResults &&
+        searchResults.length === 0 &&
+        location.pathname === "/" &&
+        styles.lower
       }`}
     >
       <div className={styles.sideline}>
@@ -70,7 +72,7 @@ export default function Header({ searchResults, setSearchResults }) {
           onChange={(e) => {
             updateSearchParameters({
               ...searchParameters,
-              categorical_query: e.target.value
+              categorical_query: e.target.value,
             });
           }}
           onKeyDown={keyPressed}
