@@ -2,7 +2,7 @@
 
 .container {
   height: 15rem;
-  width: 93rem;
+  width: mixin.$profile-width;
   box-shadow: 3px 4px 4px 0 rgba(36, 41, 47, 0.25);
   border: 1px solid rgba(36, 41, 47, 0.25);
   border-radius: 1rem;

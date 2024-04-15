@@ -17,6 +17,7 @@
     border-radius: 3rem;
     transition: 0.3s;
     cursor: pointer;
+    background-color: mixin.$white;
 
     &:hover {
       background-color: mixin.$light;
@@ -41,13 +42,13 @@
   }
 
   .playerInfoContainer {
-    width: 93rem;
+    width: mixin.$profile-width;
     margin-top: 1rem;
     // margin-top: 2rem; // REVERT TO ORIGINAL AFTER VIDEOS WORK
     display: flex;
     align-items: center;
 
-    img {
+    > img {
       width: 15rem;
       aspect-ratio: 1;
       object-fit: cover;
@@ -89,7 +90,7 @@
 
   .scoutingReport {
     margin-top: 2rem;
-    width: 93rem;
+    width: mixin.$profile-width;
     background-color: mixin.$red;
     padding: 1rem 2rem;
     border-radius: 1rem;
@@ -131,7 +132,7 @@
 
   .recsContainer {
     margin: 2rem 0 1rem;
-    width: 93rem;
+    width: mixin.$profile-width;
 
     .recs {
       display: flex;
@@ -140,7 +141,7 @@
   }
 
   .similarPlayersContainer {
-    width: 93rem;
+    width: mixin.$profile-width;
 
     .similarPlayers {
       background-color: mixin.$light;

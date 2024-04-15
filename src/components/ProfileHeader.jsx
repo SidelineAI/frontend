@@ -2,16 +2,15 @@ import styles from "../styles/header.module.scss";
 import search from "../assets/icons/Search.svg";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 
 const initialValues = {
   query: "",
   num_vids: 5,
-  player_id: ""
+  player_id: "",
 };
 
 export default function ProfileHeader({ setVideo }) {
-
   const { id } = useParams();
 
   const [searchParameters, setSearchParameters] = useState(initialValues);
@@ -22,25 +21,22 @@ export default function ProfileHeader({ setVideo }) {
 
   const keyPressed = (e) => {
     if (e.key === "Enter") {
-      axios.post("http://127.0.0.1:5000/search/video", searchParameters, {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*"
-        }
-      })
-      .then(res => {
-        setVideo(res.data);  // Set sorted videos
-      })
-      .catch(err => console.log(err));
+      axios
+        .post("http://127.0.0.1:5000/search/video", searchParameters, {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        })
+        .then((res) => {
+          setVideo(res.data); // Set sorted videos
+        })
+        .catch((err) => console.log(err));
     }
   };
 
   return (
-    <div
-      className={`${styles.container} ${
-        styles.lower
-      }`}
-    >
+    <div className={styles.container}>
       <div className={styles.sideline}>
         Side<span className={styles.red}>l</span>ine
       </div>
@@ -56,7 +52,7 @@ export default function ProfileHeader({ setVideo }) {
             updateSearchParameters({
               ...searchParameters,
               query: e.target.value,
-              player_id: id
+              player_id: id,
             });
           }}
           onKeyDown={keyPressed}

@@ -56,7 +56,7 @@ export default function Header({ searchResults, setSearchResults }) {
       className={`${styles.container} ${
         searchResults &&
         searchResults.length === 0 &&
-        location.pathname === "/search" &&
+        location.pathname === "/" &&
         styles.lower
       }`}
     >
