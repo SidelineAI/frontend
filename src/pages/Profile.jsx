@@ -125,7 +125,7 @@ export default function Profile() {
         <div className={styles.recs}>
           <Rec
             rec={{
-              rec: "John is a dedicated student with a strong passion for physics.",
+              rec: "A great player with a great attitude, and a hard worker. Keeps morale high and is a leader in and out of the court.",
               pfp: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2024-04/240412-mark-pope-se-107p-e20400.jpg",
               name: "John Doe",
               school: "University of Example",
