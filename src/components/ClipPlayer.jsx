@@ -12,6 +12,7 @@ export default function ClipPlayer({ videos }) {
 
   useEffect(() => {
     if (!window.Vimeo || clips.length === 0) {
+      console.log(clips)
       console.error('Vimeo Player script not loaded or no clips available');
       return;
     }
