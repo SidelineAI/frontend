@@ -1,8 +1,11 @@
 import { useState } from "react";
 import styles from "../styles/filter.module.scss";
 
-export default function Filter({ toggleFilter, searchParameters, updateSearchParameters }) {
-
+export default function Filter({
+  toggleFilter,
+  searchParameters,
+  updateSearchParameters,
+}) {
   const [values, setValues] = useState(searchParameters);
 
   const handleInputChange = (e) => {
@@ -12,7 +15,7 @@ export default function Filter({ toggleFilter, searchParameters, updateSearchPar
     setValues(newSearchParameters);
     updateSearchParameters(newSearchParameters);
   };
-  
+
   const saveFilter = () => {
     toggleFilter();
   };
@@ -20,7 +23,7 @@ export default function Filter({ toggleFilter, searchParameters, updateSearchPar
   return (
     <div className={styles.overlay}>
       <div className={styles.container}>
-        <h2>Filter</h2>
+        <h2>Filter Search</h2>
         <div className={styles.filterCategories}>
           <div className={styles.category}>
             <h3>Statistics</h3>
