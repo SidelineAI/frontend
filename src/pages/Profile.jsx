@@ -12,6 +12,28 @@ import axios from "axios";
 import Loading from "./Loading";
 import ProfileHeader from "../components/ProfileHeader";
 
+const Typewriter = ({ text, interval }) => {
+  const [displayText, setDisplayText] = useState("");
+
+  useEffect(() => {
+    let charIndex = 0;
+    setDisplayText("");
+    const timer = setInterval(() => {
+      if (charIndex < text.length) {
+        setDisplayText(text.substring(0, charIndex + 1) + " |");
+        charIndex++;
+      } else {
+        setDisplayText(text);
+        clearInterval(timer);
+      }
+    }, interval); // Adjust the typing speed here (in milliseconds)
+
+    return () => clearInterval(timer);
+  }, [text]);
+
+  return <p className={styles.content}>{displayText}</p>;
+};
+
 export default function Profile() {
   const { id } = useParams();
   const [player, setPlayer] = useState(null);
@@ -114,7 +136,9 @@ export default function Profile() {
         </div>
       </div>
       <div className={styles.scoutingReport}>
-        <p className={styles.content}>{player.scouting_report}</p>
+        <div className={styles.contentContainer}>
+          <Typewriter text={player.scouting_report} interval={4} />
+        </div>
         <div className={styles.analysisContainer}>
           <img src={star} alt="Star" />
           <p className={styles.sidelineAnalysis}>Sideline AI Analysis</p>
