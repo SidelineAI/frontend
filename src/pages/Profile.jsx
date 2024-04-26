@@ -17,7 +17,6 @@ const Typewriter = ({ text, interval }) => {
 
   useEffect(() => {
     let charIndex = 0;
-    setDisplayText("");
     const timer = setInterval(() => {
       if (charIndex < text.length) {
         setDisplayText(text.substring(0, charIndex + 1) + " |");
@@ -95,9 +94,16 @@ export default function Profile() {
 
   return (
     <div className={styles.container}>
-      <button className={styles.backContainer} onClick={() => navigate(-1)}>
+      <button
+        className={styles.backContainer}
+        onClick={() => {
+          navigate(-1);
+          setLoadingPlayer(true);
+          setLoadingSimilarPlayers(true);
+        }}
+      >
         <img src={LeftArrow} alt="Back" />
-        <p>Home</p>
+        <p>Back</p>
       </button>
       <ProfileHeader setVideo={setVideo}/>
       <div className={styles.clipPlayerContainer}>
