@@ -14,11 +14,11 @@ export default function PlayerInfo({ player }) {
         </div>
       </div>
       <p className={styles.school}>{player.school}</p>
-      <div className={styles.physical}>
+      {/* <div className={styles.physical}>
         <p>{player.height}</p>
         <p>{player.age}</p>
         <p>{player.weight}</p>
-      </div>
+      </div> */}
       <p className={styles.games}>{player.games_played} Games Played</p>
     </div>
   );

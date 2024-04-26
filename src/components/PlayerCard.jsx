@@ -7,6 +7,7 @@ import layups from "../assets/layups.mp4";
 import PlayerInfo from "./PlayerInfo";
 
 export default function PlayerCard({ player, onPlayerClick }) {
+  console.log(player)
   const [videoSrc, setVideoSrc] = useState(null);
 
   const handleSkillHover = (skill) => {
@@ -22,7 +23,8 @@ export default function PlayerCard({ player, onPlayerClick }) {
 
   return (
     <div className={styles.container} onClick={onPlayerClick}>
-      {videoSrc ? (
+      <img src={player.profile_img} alt="Player PFP" className={styles.img} />
+      {/* {videoSrc ? (
         <video autoPlay loop muted playsInline>
           <source
             src={
@@ -41,12 +43,12 @@ export default function PlayerCard({ player, onPlayerClick }) {
         </video>
       ) : (
         <img src={player.img} alt="Player PFP" className={styles.img} />
-      )}
+      )} */}
       <div className={styles.info}>
         <div className={styles.left}>
           <PlayerInfo player={player} />
 
-          <div className={styles.skills}>
+          {/* <div className={styles.skills}>
             {player.skills.map((skill, index) => (
               <p
                 key={index}
@@ -56,31 +58,31 @@ export default function PlayerCard({ player, onPlayerClick }) {
                 {skill.name}
               </p>
             ))}
-          </div>
+          </div> */}
         </div>
         <div className={styles.right}>
           <div>
-            <p className={styles.stat}>{player.points_per_game}</p>
+            <p className={styles.stat}>{player.avg_points}</p>
             <p className={styles.label}>Points per Game</p>
           </div>
           <div>
-            <p className={styles.stat}>{player.rebounds}</p>
+            <p className={styles.stat}>{player.avg_rebounds}</p>
             <p className={styles.label}>Rebounds per Game</p>
           </div>
           <div>
-            <p className={styles.stat}>{player.assists}</p>
+            <p className={styles.stat}>{player.avg_assists}</p>
             <p className={styles.label}>Assists per Game</p>
           </div>
           <div>
-            <p className={styles.stat}>{player.field_goal_pct}</p>
+            <p className={styles.stat}>{player.avg_field_goal_pct}</p>
             <p className={styles.label}>Field Goal Percentage</p>
           </div>
           <div>
-            <p className={styles.stat}>{player.three_point_pct}</p>
+            <p className={styles.stat}>{player.avg_three_point_pct}</p>
             <p className={styles.label}>Three Point Percentage</p>
           </div>
           <div>
-            <p className={styles.stat}>{player.free_throw_pct}</p>
+            <p className={styles.stat}>{player.avg_free_throw_pct}</p>
             <p className={styles.label}>Free Throw Percentage</p>
           </div>
         </div>

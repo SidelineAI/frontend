@@ -4,19 +4,35 @@
   display: flex;
 
   .highlightClip {
-    img {
-      width: 68rem;
-      height: 40rem;
-      object-fit: cover;
-      border-radius: 1rem;
-      cursor: pointer;
-    }
+    width: fit-content;
+    height: fit-content;
+    border-radius: 1rem;
+    cursor: pointer;
+    overflow: hidden;
   }
 
   .otherClips {
     margin-left: 1.3rem;
-    min-width: 24rem;
-    height: 40rem;
+    min-width: 18rem;
+    height: 535px;
     overflow-y: auto;
+  }
+
+  .clip {
+    position: relative;
+    cursor: pointer;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0); // Fully transparent
+    z-index: 1; // Ensure it's above the video but below any potential UI elements
   }
 }

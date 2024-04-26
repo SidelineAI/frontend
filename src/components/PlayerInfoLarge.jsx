@@ -1,4 +1,6 @@
 import styles from "../styles/playerinfolarge.module.scss";
+import send from "../assets/icons/Send.svg";
+import x from "../assets/icons/X.svg";
 
 export default function PlayerInfoLarge({ player }) {
   return (
@@ -14,12 +16,16 @@ export default function PlayerInfoLarge({ player }) {
         </div>
       </div>
       <p className={styles.school}>{player.school}</p>
-      <div className={styles.physical}>
+      {/* <div className={styles.physical}>
         <p>{player.height}</p>
         <p>{player.age}</p>
         <p>{player.weight}</p>
-      </div>
+      </div> */}
       <p className={styles.games}>{player.games_played} Games Played</p>
+      <div className={styles.contacts}>
+        <img src={send} alt="Contact" />
+        <img className={styles.x} src={x} alt="X" />
+      </div>
     </div>
   );
 }

@@ -57,8 +57,23 @@
   }
 
   .games {
-    margin-top: 0.3rem;
+    margin-top: 0.5rem;
     font-size: 1rem;
     font-weight: 300;
+  }
+
+  .contacts {
+    margin-top: 0.5rem;
+    display: flex;
+
+    > img {
+      width: 2.5rem;
+      aspect-ratio: 1;
+      cursor: pointer;
+    }
+
+    .x {
+      margin-left: 1rem;
+    }
   }
 }
