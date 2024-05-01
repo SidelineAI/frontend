@@ -33,6 +33,31 @@ const Typewriter = ({ text, interval }) => {
   return <p className={styles.content}>{displayText}</p>;
 };
 
+const templateRecommendations = [
+  {
+    rec: "A great player with a great attitude, and a hard worker. Keeps morale high and is a leader in and out of the court.",
+    pfp: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2024-04/240412-mark-pope-se-107p-e20400.jpg",
+    name: "John Doe",
+    school: "University of Example",
+  },
+  {
+    rec: "A great player with a great attitude, and a hard worker. Keeps morale high and is a leader in and out of the court.",
+    pfp: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2024-04/240412-mark-pope-se-107p-e20400.jpg",
+    name: "John Doe",
+    school: "University of Example",
+  },
+  {
+    rec: "A great player with a great attitude, and a hard worker. Keeps morale high and is a leader in and out of the court.",
+    pfp: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2024-04/240412-mark-pope-se-107p-e20400.jpg",
+    name: "John Doe",
+    school: "University of Example",
+  },
+];
+
+const getRandomRecommendation = () => {
+  return templateRecommendations[Math.floor(Math.random() * templateRecommendations.length)];
+}
+
 export default function Profile() {
   const { id } = useParams();
   const [player, setPlayer] = useState(null);
@@ -153,14 +178,7 @@ export default function Profile() {
       <div className={styles.recsContainer}>
         <p className={styles.subtitle}>Recommendations</p>
         <div className={styles.recs}>
-          <Rec
-            rec={{
-              rec: "A great player with a great attitude, and a hard worker. Keeps morale high and is a leader in and out of the court.",
-              pfp: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2024-04/240412-mark-pope-se-107p-e20400.jpg",
-              name: "John Doe",
-              school: "University of Example",
-            }}
-          />
+          <Rec rec={getRandomRecommendation()} />
           {/* ADD FUNCTIONALITY FOR RECOMMENDATIONS BELOW ONCE IMPLEMENTED IN BACKEND */}
           {/* {player.recommendations.map((rec, index) => (
             <Rec rec={rec} key={index} />
