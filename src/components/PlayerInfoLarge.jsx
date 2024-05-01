@@ -11,9 +11,9 @@ function getRandomValue(baseValue, deviation) {
 const HeightAndWeight = () => {
   const heightFeet = 6;
   const heightInches = 4;
-  const weight = 182;
+  const weight = 200;
   const heightDeviation = 4; // Deviation for height in inches
-  const weightDeviation = 5; // Deviation for weight in lbs
+  const weightDeviation = 10; // Deviation for weight in lbs
 
   const randomHeightInches = getRandomValue(heightInches, heightDeviation);
   const randomWeight = getRandomValue(weight, weightDeviation);
