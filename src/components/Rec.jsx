@@ -1,4 +1,5 @@
 import styles from "../styles/rec.module.scss";
+import verified from "../assets/icons/Verified.svg"
 
 export default function Rec({ rec }) {
   return (
@@ -10,6 +11,7 @@ export default function Rec({ rec }) {
           <p className={styles.name}>{rec.name}</p>
           <p className={styles.school}>{rec.school}</p>
         </div>
+        <img src={verified} alt="Verified" />
       </div>
     </div>
   );
