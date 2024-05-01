@@ -35,19 +35,19 @@ const Typewriter = ({ text, interval }) => {
 
 const templateRecommendations = [
   {
-    rec: "A great player with a great attitude, and a hard worker. Keeps morale high and is a leader in and out of the court.",
+    rec: "A remarkable athlete with exceptional skills on the court. They consistently push themselves and their teammates to perform at their best. Their dedication to the game is unparalleled, and their positive attitude is contagious. They are a natural leader both on and off the court, always inspiring those around them to strive for greatness. Their work ethic, combined with their talent, makes them a valuable asset to any team.",
     pfp: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2024-04/240412-mark-pope-se-107p-e20400.jpg",
     name: "John Doe",
     school: "University of Example",
   },
   {
-    rec: "A great player with a great attitude, and a hard worker. Keeps morale high and is a leader in and out of the court.",
+    rec: "A dynamic player with a passion for the game that is unmatched. Their determination and drive to succeed make them a standout athlete. They are constantly working to improve their skills and are always willing to put in the extra effort to help their team succeed. Their positive attitude and leadership qualities make them a valuable asset both on and off the court. They are a true team player who leads by example and inspires those around them to do their best.",
     pfp: "https://cdn.nba.com/manage/2021/12/kerr-iso-olympics-usa-784x523.jpeg",
     name: "Kyle Smith",
     school: "Some Town High School",
   },
   {
-    rec: "A great player with a great attitude, and a hard worker. Keeps morale high and is a leader in and out of the court.",
+    rec: "An exceptional athlete with a natural talent for the game. Their skills on the court are unmatched, and they consistently push themselves to new heights. They are a true leader, both on and off the court, and their positive attitude is infectious. They are always willing to go the extra mile to help their team succeed, and their work ethic is second to none. They are a valuable asset to any team, and their presence on the court is sure to elevate the performance of those around them.",
     pfp: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Mike_Brown_NBA_cropped.jpg/330px-Mike_Brown_NBA_cropped.jpg",
     name: "Chris Johnson",
     school: "University of State",
