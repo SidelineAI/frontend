@@ -1,5 +1,28 @@
 import styles from "../styles/playerinfo.module.scss";
 
+function getRandomValue(baseValue, deviation) {
+  const min = baseValue - deviation;
+  const max = baseValue + deviation;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const HeightAndWeight = () => {
+  const heightFeet = 6;
+  const heightInches = 4;
+  const weight = 200;
+  const heightDeviation = 4; // Deviation for height in inches
+  const weightDeviation = 10; // Deviation for weight in lbs
+
+  const randomHeightInches = getRandomValue(heightInches, heightDeviation);
+  const randomWeight = getRandomValue(weight, weightDeviation);
+
+  return (
+    <div>
+      <p className={styles.games}>6'{randomHeightInches}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{randomWeight} Ibs</p>
+    </div>
+  );
+}
+
 export default function PlayerInfo({ player }) {
   return (
     <div className={styles.container}>
@@ -20,6 +43,7 @@ export default function PlayerInfo({ player }) {
         <p>{player.weight}</p>
       </div> */}
       <p className={styles.games}>{player.games_played} Games Played</p>
+      <HeightAndWeight />
     </div>
   );
 }
