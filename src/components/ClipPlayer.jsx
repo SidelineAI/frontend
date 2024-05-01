@@ -8,7 +8,8 @@ export default function ClipPlayer({ videos }) {
   useEffect(() => {
     // Sort clips initially and on every update from the parent
     setClips(
-      [...videos.clips].sort((a, b) => a.time_range.start - b.time_range.start)
+      [...videos.clips]
+      // .sort((a, b) => a.time_range.start - b.time_range.start)
     );
   }, [videos]);
 
