@@ -42,15 +42,15 @@ const templateRecommendations = [
   },
   {
     rec: "A great player with a great attitude, and a hard worker. Keeps morale high and is a leader in and out of the court.",
-    pfp: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2024-04/240412-mark-pope-se-107p-e20400.jpg",
-    name: "John Doe",
-    school: "University of Example",
+    pfp: "https://cdn.nba.com/manage/2021/12/kerr-iso-olympics-usa-784x523.jpeg",
+    name: "Kyle Smith",
+    school: "Some Town High School",
   },
   {
     rec: "A great player with a great attitude, and a hard worker. Keeps morale high and is a leader in and out of the court.",
-    pfp: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2024-04/240412-mark-pope-se-107p-e20400.jpg",
-    name: "John Doe",
-    school: "University of Example",
+    pfp: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Mike_Brown_NBA_cropped.jpg/330px-Mike_Brown_NBA_cropped.jpg",
+    name: "Chris Johnson",
+    school: "University of State",
   },
 ];
 
