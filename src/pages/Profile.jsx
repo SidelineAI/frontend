@@ -172,7 +172,7 @@ export default function Profile() {
         </div>
         <div className={styles.analysisContainer}>
           <img src={star} alt="Star" />
-          <p className={styles.sidelineAnalysis}>Sideline AI Analysis</p>
+          <p className={styles.sidelineAnalysis}>Sideline Analysis</p>
         </div>
       </div>
       <div className={styles.recsContainer}>
